@@ -4,11 +4,11 @@ import random
 import re
 
 session = requests.Session()
-#url模板，需要访问留言板查看g_tk值
+#url模板，需要访问留言板替换url
 url_template = "https://user.qzone.qq.com/proxy/domain/m.qzone.qq.com/cgi-bin/new/get_msgb?uin=1111111111&hostUin=1111111111&num=10&start={start}&hostword=0&essence=1&r={r_value}&iNotice=0&inCharset=utf-8&outCharset=utf-8&format=jsonp&ref=qzone&g_tk=123456789&g_tk=123456789"
-# 初始start值，表示从第几条留言开始抓取
+
 start = 0
-#访问qq留言板将cookie复制进去
+#访问qq留言板 复制cookie
 cookies = {
     'eas_sid': '',
     'pgv_pvid': '',
@@ -74,7 +74,5 @@ def process_file():
                 
                 outfile.write(f"{pubtime}\n")
                 outfile.write(f"{nickname}: {ubbcontent}\n\n")
-        else:
-            print("数据不匹配，可能抓取有误")
 
 process_file()
